@@ -1,0 +1,71 @@
+{% extends 'home.html' %}{% load static %} {% block body %}
+
+<div class="container" style="max-width: 60%;">
+  <h1 class="text-center my-5 text-uppercase mb-3">ADD A BOOK</h1>
+  <form enctype="multipart/form-data" action="/bookadded/" method="POST">
+    {% csrf_token %}
+    <div class="form-group row">
+      <label for="input1" class="col-sm-3">Book title:</label>
+      <div class="col-sm-9">
+        <input
+          type="text"
+          class="form-control"
+          id="input1"
+          name="name"
+          required
+        />
+      </div>
+    </div>
+    <div class="form-group row">
+        <label for="input2" class="col-sm-3">Author name:</label>
+        <div class="col-sm-9">
+          <input
+            type="text"
+            class="form-control"
+            id="input2"
+            name="author"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="input3" class="col-sm-3">Genre:</label>
+        <div class="col-sm-9">
+            <select class="form-control" id="input3" name="genre" required>
+                <option selected value="">Choose...</option>
+                {% for g in genre %}
+                <option>{{g.G_name}}</option>
+                {% endfor %}
+              </select>
+              </div>
+              </div>
+              <div class="form-group row">
+                <label for="input4" class="col-sm-3">Language:</label>
+                <div class="col-sm-9">
+                    <select class="form-control" id="input4" name="language" required>
+                        <option selected value="">Choose...</option>
+                        {% for l in lang %}
+                        <option>{{l.L_name}}</option>
+                        {% endfor %}
+                      </select>
+                      </div>
+                      </div>
+      <div class="form-group row">
+        <label for="input5" class="col-sm-3 col-form-label">Uploaded_at:</label>
+        <div class="col-sm-9">
+          <input
+            class="form-control"
+            id="input5"
+            type="date"
+            name="uploaded_at"
+            required
+          />
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn button my-2 btn-sm">PUBLISH</button>
+      </div>
+    </form>
+</div>
+
+{% endblock %}

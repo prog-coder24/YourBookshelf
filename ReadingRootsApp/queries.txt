@@ -1,0 +1,16 @@
+#All books
+Book.objects.all()
+
+#Book with respective Genres
+Book_name.Genres.all()
+
+#Return books that belongs to Genre
+gen_name = Genre.objects.get(G_name='')
+gen_name.gbooks.all()
+
+#Books with particular genre
+Book.objects.filter(Genres__G_name='')
+
+#Genres of particular book
+Genre.objects.filter(gbooks__Name='')
+
