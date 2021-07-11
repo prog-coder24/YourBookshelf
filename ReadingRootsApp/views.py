@@ -39,4 +39,6 @@ def bookAdded(request):
 
 
 def bookList(request):
-    return render(request,'books.html')
+
+    books = Book.objects.all()
+    return render(request,'books.html',{'books':books})

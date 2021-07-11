@@ -1,1 +1,33 @@
-<h1>All Books</h1>
+{% extends 'home.html' %}{% load static %} {% block body %}
+<h1 class="text-center my-5">All Books</h1>
+<div class="table-responsive container table-hover mt-5" data-aos="fade" data-aos-duration="1000">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Index No.</th>
+                <th scope="col">Book Name</th>
+                <th scope="col">Author</th>
+                <th scope="col">Genre</th>
+                <th scope="col" class="text-center">Language</th>
+                <th scope="col" class="text-center">Added_on</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in books %}
+            <tr>
+                <th scope="row">{{ forloop.counter }}</th>
+                <td>{{ b.Name }}</td>
+                <td>{{ b.Author }}</td>
+                {% for Gen in b.Genres.all %}
+                <td>{{ Gen }}</td>
+                {% endfor %}
+                {% for lang in b.Languages.all %}
+                <td>{{ lang }}</td>
+                {% endfor %}
+                <td>{{ b.added_on }}</td>
+            </tr>
+            {% endfor %}  
+    </tbody>
+  </table>
+</div>
+{% endblock %}
